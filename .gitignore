@@ -1,0 +1,17 @@
+# Project place file
+/Mirrors.rbxlx
+
+# Roblox Studio lock files
+/*.rbxlx.lock
+/*.rbxl.lock
+
+# Moonwave pages
+/build
+
+# Wally packages
+/Packages
+
+# Project testing
+/test/client/*
+/test/server/*
+/test/shared/*

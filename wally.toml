@@ -1,0 +1,42 @@
+[package]
+name = "flamenco687/mirrors"
+description = "Roblox library to make state replication funnier"
+
+version = "0.1.0-dev"
+license = "MIT"
+
+authors = ["flamenco687"]
+realm = "shared"
+
+registry = "https://github.com/UpliftGames/wally-index"
+
+exclude = [ # These files are excluded from the final release that will be packaged, but they're used during development
+
+    # Folders
+
+    "docs", 
+    "test",
+    "build",
+
+    # .toml
+
+    "roblox.toml",
+    "selene.toml",
+    "foreman.toml",
+
+    # .json
+
+    "test.project.json",
+
+    # .md
+
+    "README.md",
+    "CHANGELOG.md",
+
+    # LICENSE
+
+    "LICENSE"
+]
+
+[dependencies]
+Proxy = "flamenco687/roblox-proxy@^3.1.1"

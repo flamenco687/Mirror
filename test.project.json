@@ -1,0 +1,38 @@
+{
+    "name": "Mirrors",
+    "tree": {
+      "$className": "DataModel",
+  
+      "ReplicatedStorage": {
+        "$className": "ReplicatedStorage",
+
+        "Shared": {
+          "$path": "Packages",
+
+          "Mirrors": {
+            "$path": "src"
+          } 
+        }
+      },
+
+      "ServerScriptService": {
+        "$className": "ServerScriptService",
+
+        "Server": {
+          "$path": "test/server/enabled"
+        }
+      },
+
+      "StarterPlayer": {
+        "$className": "StarterPlayer",
+
+        "StarterPlayerScripts": {
+          "$className": "StarterPlayerScripts",
+  
+          "Client": {
+            "$path": "test/client/enabled"
+          }
+        }
+      }
+    }
+  }
