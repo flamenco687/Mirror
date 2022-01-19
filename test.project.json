@@ -1,15 +1,17 @@
 {
-    "name": "Mirrors",
+    "name": "Mirror",
     "tree": {
       "$className": "DataModel",
   
       "ReplicatedStorage": {
         "$className": "ReplicatedStorage",
 
+        "$path": "test/shared",
+
         "Shared": {
           "$path": "Packages",
 
-          "Mirrors": {
+          "Mirror": {
             "$path": "src"
           } 
         }
@@ -19,7 +21,7 @@
         "$className": "ServerScriptService",
 
         "Server": {
-          "$path": "test/server/enabled"
+          "$path": "test/server"
         }
       },
 
@@ -30,7 +32,7 @@
           "$className": "StarterPlayerScripts",
   
           "Client": {
-            "$path": "test/client/enabled"
+            "$path": "test/client"
           }
         }
       }

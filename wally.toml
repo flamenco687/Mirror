@@ -1,5 +1,5 @@
 [package]
-name = "flamenco687/mirrors"
+name = "flamenco687/mirror"
 description = "Roblox library to make state replication funnier"
 
 version = "0.1.0-dev"
