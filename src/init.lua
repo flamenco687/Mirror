@@ -1,5 +1,6 @@
 local ServerScriptService = game:GetService("ServerScriptService")
 local RunService: RunService = game:GetService("RunService")
+local Players: Players = game:GetService("Players")
 
 local Package = script
 local Utility = Package:FindFirstChild("Utility")
@@ -50,6 +51,15 @@ local METATABLE = {__index = Mirror}
     @within Mirror
 ]=]
 local function ListenToReflexUpdates(Reflex: Instance | Types.Reflex, Table: Proxy)
+    if not rawget(Table._Proxy, Reflex.Name) then
+        local Value: any = if Reflex:GetAttribute("Value") then Reflex:GetAttribute("Value") else GetReflexRealValue:InvokeServer(Reflex)
+
+        if Value == nil and #Reflex:GetChildren() > 0 then
+            Table[Reflex.Name] = TableToProxy(ReflexesToTable(Reflex, true), true, Reflex)
+        else
+            Table[Reflex.Name] = Value
+        end
+    end
 
     --[=[
         Listens to reflex value changes and updates the [Mirror.Data] entry accordingly
@@ -119,7 +129,7 @@ local function ListenToReflexUpdates(Reflex: Instance | Types.Reflex, Table: Pro
     ]=]
     local function Destroyed(Child: Instance, Parent: Instance | nil)
         if Parent then
-            return warn("Reflex ancestry changed to a different parent instead of nil which shouldn't happen.", Child, Parent)
+            return
         end
 
         ValueChangedConnection:Disconnect()
@@ -134,8 +144,8 @@ end
 
 --[=[
     Fires when a key is changed on the server [Mirror.Data]. The function updates
-    the reflex which name matches with the key and triggers the whole replication
-    process by updating its value, connecting listeners and cleaning old children
+    the reflex equivalent of the key and triggers the whole replication process
+    by updating its value, connecting listeners and cleaning old children
 
     @private
     @server
@@ -148,7 +158,7 @@ local function OnKeyChange(Key: string, Value: any, OldValue: any, self: Proxy)
     SetReflexValue(Reflex, Value)
 
     if type(Value) == "table" then
-        self[Key] = TableToProxy(Value, true, GetInstance(Key, "Configuration", self._Container)) -- May trigger another time function
+        rawset(self._Proxy, Key, TableToProxy(Value, true, GetInstance(Key, "Configuration", self._Container)))
     else
         DestroyChildren(Reflex) -- Old value could be a table with children that must be destroyed to represent it is now a single-value
     end
@@ -191,14 +201,64 @@ function TableToProxy(Table: table, Recursive: boolean, Container: Instance): Pr
     return NewProxy
 end
 
-function Mirror:Set()
+--[=[
+    Adds player or array of players to the [Mirror._Whitelist]
+
+    @server
+]=]
+function Mirror:AddWhitelist(PlayerToAdd: Player | Array<Player>)
+    if type(PlayerToAdd) == "table" then
+        table.move(PlayerToAdd, 1, #PlayerToAdd, #self._Whitelist + 1, self._Whitelist)
+    else
+        table.insert(self._Whitelist, PlayerToAdd)
+    end
+end
+
+--[=[
+    Removes player or array of players from the [Mirror._Whitelist]
+
+    @server
+]=]
+function Mirror:RemoveWhitelist(PlayerToRemove: Player | Array<Player>)
+    local function RemoveFirstOccurrence(Player: Player)
+        local Index = table.find(self._Whitelist, Player)
+
+        if Index then
+            table.remove(self._Whitelist, Player)
+        end
+    end
+
+    if type(PlayerToRemove) == "table" then
+        for _: number, Player: Player in pairs(PlayerToRemove) do
+            RemoveFirstOccurrence(Player)
+        end
+    else
+        RemoveFirstOccurrence(PlayerToRemove)
+    end
+end
+
+--[=[
+    Overrides the current [Mirror.Data] and sets it to the passed table
+
+    @server
+
+    @yields
+]=]
+function Mirror:Set(NewData: table)
+    DestroyChildren(self._Container)
+
     self.Data:Destroy()
+    self.Data = TableToProxy(NewData, true, self._Container)
+end
+
+function Mirror:OnChange(Listener: (Key: string?, NewValue: any?, OldValue: any?, Table: Proxy?) -> ())
+    
 end
 
 --[=[
     Returns an existing mirror
 
-    @param Settings MirrorSettings
+    @yields
 ]=]
 function Mirror.Get(Name: string): Mirror
     if ActiveMirrors[Name] then
@@ -210,7 +270,11 @@ function Mirror.Get(Name: string): Mirror
             task.wait()
         end
     else
-        return Mirror.new(Name, ReflexesToTable(GetInstance(Name, "Folder", MainContainer), true), GetMirrorSettings:InvokeServer(Name))
+        -- MirrorSettings are requested before loading anything else because it yields until the player has access
+        -- to the mirror. This way, the scritp doesn't run functions that may not be necessary since the player
+        -- will never have access to the mirror
+
+        return Mirror.new(Name, ReflexesToTable(GetInstance(Name, "Folder", MainContainer), true))
     end
 
     return ActiveMirrors[Name]
@@ -227,7 +291,7 @@ end
     @tag Constructor
 
     @param Name string
-    @param Origin table? -- Optional table that the mirror will be constructed with
+    @param Origin table? -- Optional table to work as a base for the mirror's [Mirror.Data]
     @param Settings MirrorSettings? -- Additional settings such as whitelist, visibility...
 ]=]
 function Mirror.new(Name: string, Origin: table?, Settings: Types.MirrorSettings?): Mirror
@@ -239,12 +303,6 @@ function Mirror.new(Name: string, Origin: table?, Settings: Types.MirrorSettings
         warn("Tried to construct an already existing mirror; use .Get() instead:\n\n"..debug.traceback())
         return ActiveMirrors[Name]
     end
-
-    local self = {
-        _Whitelist = if Settings and Settings.Whitelist then Settings.Whitelist else {},
-        _IsPrivate = if Settings and Settings.IsPrivate then Settings.IsPrivate else false,
-        _Name = Name,
-    }
 
     local Container: Folder = GetInstance(Name, "Folder", MainContainer)
     local Data: Proxy = TableToProxy(if Origin then Origin else {}, if Origin then true else false, Container)
@@ -260,8 +318,17 @@ function Mirror.new(Name: string, Origin: table?, Settings: Types.MirrorSettings
         end)
     end
 
-    self.Data = Data
-    self._Container = Container
+    local self = {
+        _Whitelist = if Settings and Settings.Whitelist then Settings.Whitelist else {},
+        _IsPrivate = if Settings and Settings.IsPrivate then Settings.IsPrivate else false,
+
+        _ChangeListeners = {},
+
+        _Container = Container,
+        _Name = Name,
+
+        Data = Data
+    }
 
     ActiveMirrors[Name] = self
 
@@ -314,17 +381,9 @@ if IsServer then
 
         if RequestedMirror._IsPrivate then
             while not table.find(RequestedMirror._Whitelist, Player) do
-                print("not whitelisted", Player)
                 task.wait()
             end
         end
-
-        local MirrorSettings: Types.MirrorSettings = {
-            Whitelist = RequestedMirror._Whitelist,
-            IsPrivate = RequestedMirror._IsPrivate,
-        }
-
-        return MirrorSettings
     end
 
     GetMirrorSettings.OnServerInvoke = RequestMirrorSettings

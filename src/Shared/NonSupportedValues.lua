@@ -21,9 +21,9 @@ function NonSupportedValues.Get(Reflex: Types.Reflex): any
     return Holder[Reflex]
 end
 
---- @within Mirror
 --- @type NonSupportedValues {[Reflex]: any}
 --- This type is only used by a shared table made to hold values which are not supported by attributes
---- and for such reason must be requested by the client through [RemoteFunction]s
+--- and for such reason must be requested by the client through [RemoteFunction]
+--- @within Mirror
 
 return NonSupportedValues

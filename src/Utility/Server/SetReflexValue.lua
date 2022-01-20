@@ -7,7 +7,6 @@ local NonSupportedValues = require(Shared.NonSupportedValues)
 local SupportedValueTypes: Types.SupportedValueTypes = require(Shared.SupportedValueTypes)
 
 --[=[
-    @within Mirror
     Sets a new value for the passed reflex. The function checks if the value type
     is supported by attributes, in which case they are used. Otherwhise, the value
     is stored in the `NonSupportedValues` shared table.
@@ -19,6 +18,8 @@ local SupportedValueTypes: Types.SupportedValueTypes = require(Shared.SupportedV
     @private
     @server
     @tag Utility
+
+    @within Mirror
 ]=]
 local function SetReflexValue(Reflex: Types.Reflex, Value: any): Types.Reflex
     if SupportedValueTypes[typeof(Value)] then

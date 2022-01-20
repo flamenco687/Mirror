@@ -1,12 +1,13 @@
 local Package = script.Parent.Parent.Parent
 
 --[=[
-    @within Mirror
     Destroys all children of an Instance
 
     @private
     @server
     @tag Utility
+
+    @within Mirror
 ]=]
 local function DestroyChildren(Parent: Instance): nil
     local Children: Array<Instance> = Parent:GetChildren()
