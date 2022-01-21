@@ -25,7 +25,6 @@ local IsClient: boolean = RunService:IsClient()
 local IsServer: boolean = RunService:IsServer()
 
 local GetReflexRealValue: RemoteFunction = Package.Remotes.GetReflexRealValue
-local GetMirrorSettings: RemoteFunction = Package.Remotes.GetMirrorSettings
 
 local MainContainer: Folder = Package.Container
 
@@ -143,16 +142,16 @@ local function ListenToReflexUpdates(Reflex: Instance | Types.Reflex, Table: Pro
 end
 
 --[=[
-    Fires when a key is changed on the server [Mirror.Data]. The function updates
+    Fires when a key is changed on the server's [Mirror.Data]. The function updates
     the reflex equivalent of the key and triggers the whole replication process
-    by updating its value, connecting listeners and cleaning old children
+    by updating its value, connecting listeners and destroying old children
 
     @private
     @server
 
     @within Mirror
 ]=]
-local function OnKeyChange(Key: string, Value: any, OldValue: any, self: Proxy)
+local function OnServerKeyChange(Key: string, Value: any, OldValue: any, self: Proxy)
     local Reflex: Types.Reflex = GetInstance(Key, "Configuration", self._Container)
 
     SetReflexValue(Reflex, Value)
@@ -177,14 +176,20 @@ function TableToProxy(Table: table, Recursive: boolean, Container: Instance): Pr
     local NewProxy: Proxy = Proxy.new(Table, { ["_Container"] = Container })
 
     if Recursive then
+        if IsServer and #Container:GetChildren() > 0 then -- Cleans old reflexes that could were present in an old proxy
+            for _: number, Reflex: Instance | Types.Reflex in pairs(Container:GetChildren()) do
+                if Table[Reflex.Name] == nil then
+                    Reflex:Destroy()
+                end
+            end
+        end
+
         for Key: string, Value: any | table in pairs(NewProxy._Proxy) do
             local Reflex: Types.Reflex = GetInstance(Key, "Configuration", Container)
 
             if IsServer then
                 SetReflexValue(Reflex, Value)
-            end
-
-            if IsClient then
+            else
                 ListenToReflexUpdates(Reflex, NewProxy)
             end
 
@@ -195,7 +200,7 @@ function TableToProxy(Table: table, Recursive: boolean, Container: Instance): Pr
     end
 
     if IsServer then
-        NewProxy:OnChange(OnKeyChange)
+        NewProxy:OnChange(OnServerKeyChange)
     end
 
     return NewProxy
@@ -221,7 +226,7 @@ end
 ]=]
 function Mirror:RemoveWhitelist(PlayerToRemove: Player | Array<Player>)
     local function RemoveFirstOccurrence(Player: Player)
-        local Index = table.find(self._Whitelist, Player)
+        local Index: number? = table.find(self._Whitelist, Player)
 
         if Index then
             table.remove(self._Whitelist, Player)
@@ -241,18 +246,18 @@ end
     Overrides the current [Mirror.Data] and sets it to the passed table
 
     @server
-
-    @yields
 ]=]
 function Mirror:Set(NewData: table)
+    if IsClient then
+        return error(":Set() is restricted to the server; clients cannot override the Mirror.Data\n\n"..debug.traceback())
+    end
+
     DestroyChildren(self._Container)
 
-    self.Data:Destroy()
+    local DataToDelete: Proxy = self.Data
     self.Data = TableToProxy(NewData, true, self._Container)
-end
 
-function Mirror:OnChange(Listener: (Key: string?, NewValue: any?, OldValue: any?, Table: Proxy?) -> ())
-    
+    DataToDelete:Destroy()
 end
 
 --[=[
@@ -296,22 +301,22 @@ end
 ]=]
 function Mirror.new(Name: string, Origin: table?, Settings: Types.MirrorSettings?): Mirror
     if IsClient and debug.info(2, "n") ~= "Get" then
-        return error("Clients may not direclty construct new mirrors; .Get() will automatically do so:\n\n"..debug.traceback())
+        return error("Clients may not direclty construct new mirrors; .Get() will automatically do so\n\n"..debug.traceback())
     end
 
     if ActiveMirrors[Name] then
-        warn("Tried to construct an already existing mirror; use .Get() instead:\n\n"..debug.traceback())
+        warn("Tried to construct an already existing mirror; use .Get() instead\n\n"..debug.traceback())
         return ActiveMirrors[Name]
     end
 
-    local Container: Folder = GetInstance(Name, "Folder", MainContainer)
+    local Container: Folder = GetInstance(Name, "Folder", MainContainer) -- The instance that will contain the reflexes
     local Data: Proxy = TableToProxy(if Origin then Origin else {}, if Origin then true else false, Container)
 
     if IsClient then
 
         -- When calling TableToProxy, existing values are automatically converted to reflexes and their listening
-        -- functions get connected by default, but newly added reflexes to the mirror's first and main container
-        -- are not tracked by default and for such reason this function exists.
+        -- functions get connected by default. Newly added reflexes to the mirror's first and main container
+        -- are not tracked by default and for such reason this function exists
 
         Container.ChildAdded:Connect(function(ChildReflex: Types.Reflex)
             ListenToReflexUpdates(ChildReflex, Data)
@@ -340,7 +345,7 @@ if IsServer then
     --[=[
         Returns the real value of the requested reflex. The function automatically checks if the
         requested reflex exists or is valid and if the player that requested the value is in the
-        mirror's whitelist (in case the mirror is private).
+        reflex's mirror whitelist (in case the mirror is private).
 
         @private
         @server
@@ -366,27 +371,6 @@ if IsServer then
     end
 
     GetReflexRealValue.OnServerInvoke = RequestRealValue
-
-    --[=[
-        Returns the [Mirror.MirrorSettings] of the requested mirror
-
-        @private
-        @server
-        @tag RemoteFunction
-
-        @within Mirror
-    ]=]
-    local function RequestMirrorSettings(Player: Player, Name: string): Types.MirrorSettings
-        local RequestedMirror: Mirror = Mirror.Get(Name)
-
-        if RequestedMirror._IsPrivate then
-            while not table.find(RequestedMirror._Whitelist, Player) do
-                task.wait()
-            end
-        end
-    end
-
-    GetMirrorSettings.OnServerInvoke = RequestMirrorSettings
 end
 
 export type Mirror = typeof(Mirror.new(""))

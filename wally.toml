@@ -2,7 +2,7 @@
 name = "flamenco687/mirror"
 description = "Roblox library to make state replication funnier"
 
-version = "0.1.0-dev"
+version = "0.3.0-beta"
 license = "MIT"
 
 authors = ["flamenco687"]
@@ -17,6 +17,7 @@ exclude = [ # These files are excluded from the final release that will be packa
     "docs", 
     "test",
     "build",
+    ".vscode",
 
     # .toml
 
