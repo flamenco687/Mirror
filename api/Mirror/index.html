@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Docusaurus v2.0.0-beta.9">
+<title data-react-helmet="true">Mirror | Mirror</title><meta data-react-helmet="true" property="og:title" content="Mirror | Mirror"><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"><meta data-react-helmet="true" property="og:url" content="https://flamenco687.github.io/Mirror/api/Mirror"><meta data-react-helmet="true" name="docusaurus_locale" content="en"><meta data-react-helmet="true" name="docusaurus_tag" content="default"><link data-react-helmet="true" rel="canonical" href="https://flamenco687.github.io/Mirror/api/Mirror"><link data-react-helmet="true" rel="alternate" href="https://flamenco687.github.io/Mirror/api/Mirror" hreflang="en"><link data-react-helmet="true" rel="alternate" href="https://flamenco687.github.io/Mirror/api/Mirror" hreflang="x-default"><link rel="stylesheet" href="/Mirror/assets/css/styles.71e0164d.css">
+<link rel="preload" href="/Mirror/assets/js/runtime~main.252fc8ec.js" as="script">
+<link rel="preload" href="/Mirror/assets/js/main.d47ff86d.js" as="script">
+</head>
+<body>
+<script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
+<div><a href="#" class="skipToContent_1oUP">Skip to main content</a></div><nav class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Navigation bar toggle" class="navbar__toggle clean-btn" type="button" tabindex="0"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/Mirror/"><b class="navbar__title">Mirror</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/Mirror/api/">API</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/flamenco687/Mirror" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link"><span>GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_3J9K"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></span></a><div class="toggle_71bT toggle_3Zt9 toggleDisabled_3cF-"><div class="toggleTrack_32Fl" role="button" tabindex="-1"><div class="toggleTrackCheck_3lV7"><span class="toggleIcon_O4iE">🌜</span></div><div class="toggleTrackX_S2yS"><span class="toggleIcon_O4iE">🌞</span></div><div class="toggleTrackThumb_xI_Z"></div></div><input type="checkbox" class="toggleScreenReader_28Tw" aria-label="Switch between dark and light mode"></div><div class="navbar__search"><span aria-label="expand searchbar" role="button" class="search-icon" tabindex="0"></span><input type="search" id="search_input_react" placeholder="Press S to Search..." aria-label="Search" class="navbar__search-input search-bar"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div class="main-wrapper docPageContainer_2Kz0"><div class="docPage_1bdk"><div class="docSidebarContainer_1ykS"><div class="sidebar_15mo"><nav class="menu thin-scrollbar menu_Bmed"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/Mirror/api/Mirror">​Mirror</a></li></ul></nav><button type="button" title="Collapse sidebar" aria-label="Collapse sidebar" class="button button--secondary button--outline collapseSidebarButton_1CGd"><svg width="20" height="20" aria-hidden="true" class="collapseSidebarButtonIcon_3E-R"><g fill="#7a7a7a"><path d="M9.992 10.023c0 .2-.062.399-.172.547l-4.996 7.492a.982.982 0 01-.828.454H1c-.55 0-1-.453-1-1 0-.2.059-.403.168-.551l4.629-6.942L.168 3.078A.939.939 0 010 2.528c0-.548.45-.997 1-.997h2.996c.352 0 .649.18.828.45L9.82 9.472c.11.148.172.347.172.55zm0 0"></path><path d="M19.98 10.023c0 .2-.058.399-.168.547l-4.996 7.492a.987.987 0 01-.828.454h-3c-.547 0-.996-.453-.996-1 0-.2.059-.403.168-.551l4.625-6.942-4.625-6.945a.939.939 0 01-.168-.55 1 1 0 01.996-.997h3c.348 0 .649.18.828.45l4.996 7.492c.11.148.168.347.168.55zm0 0"></path></g></svg></button></div></div><main class="docMainContainer_28N5"><div class="container padding-vert--lg"><div class="row"><div class="col docItemCol_3WPG"><div class="docItemContainer_3XDu"><article><div class="member_qHIL markdown"><div class="tocCollapsible_1PrD theme-doc-toc-mobile tocMobile_3ryM"><button type="button" class="clean-btn tocCollapsibleButton_2O1e">On this page</button></div><header><h1 class="docTitle_1ddc" style="text-decoration:none"><span style="display:inline-block">Mirror</span></h1><div class="luaClassTags_2Zrs"></div><label class="privateToggle_392d"><span class="privateCheckboxContainer_3byV"><input type="checkbox" class="privateCheckboxInternal_1EDc" name="checkbox"><span class="privateCheckboxControl_puPe"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="3" d="M4 11.91l5.37 5.37L19.79 5.59"></path></svg></span></span><span class="privateCheckboxLabel_3To7">Show Private</span></label><div></div></header><h2 class="anchor anchorWithStickyNavbar_31ik" id="types">Types<a aria-hidden="true" class="hash-link" href="#types" title="Direct link to heading">​</a></h2><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="NonSupportedValues"><code style="text-decoration:none">NonSupportedValues</code><a aria-hidden="true" class="hash-link" href="#NonSupportedValues" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/flamenco687/Mirror/blob/master/src/Shared/NonSupportedValues.lua#L28"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code class="purple__nFc">type</code> <code>NonSupportedValues<!-- --> = </code> <code class="purple__nFc">{</code><span><code>[</code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="/Mirror/api/Mirror#Reflex">Reflex</a></code><code>]</code></span><code>: </code><code class="blue_2Afy">any</code><code class="purple__nFc">}</code></div><div>
+<p>
+  This type is only used by a shared table made to hold values which are not supported by attributes
+  and for such reason must be requested by the client through <a href="https://developer.roblox.com/en-us/api-reference/class/RemoteFunction" target="_blank">RemoteFunction</a>
+</p>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="Reflex"><code style="text-decoration:none">Reflex</code><a aria-hidden="true" class="hash-link" href="#Reflex" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/flamenco687/Mirror/blob/master/src/Types/init.lua#L32"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code class="purple__nFc">type</code> <code>Reflex<!-- --> = </code> <code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Configuration" target="_blank" rel="noopener noreferrer">Configuration<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code></div><div>
+<p>
+  Reflexes are containers that simply hold a value (using roblox attributes) in a studio-instance. The reflexes of a mirror
+  represent that mirror's <a href="/Mirror/api/Mirror#Data">Mirror.Data</a> in an instance tree so the client can easily access primitive values by making
+  use of <code>:GetAttribute()</code>. If a reflex's value is nil it means that the real value is being held by the server because
+  it cannot be set as an attribute value.
+</p>
+</div><h2 class="anchor anchorWithStickyNavbar_31ik" id="properties">Properties<a aria-hidden="true" class="hash-link" href="#properties" title="Direct link to heading">​</a></h2><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="Data"><code style="text-decoration:none">Data</code><a aria-hidden="true" class="hash-link" href="#Data" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/flamenco687/Mirror/blob/master/src/init.lua#L41"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Mirror<!-- -->.<!-- -->Data<!-- -->:<!-- --> </code> <code class="blue_2Afy">Proxy</code></div><div></div><h2 class="anchor anchorWithStickyNavbar_31ik" id="functions">Functions<a aria-hidden="true" class="hash-link" href="#functions" title="Direct link to heading">​</a></h2><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="Get"><code style="text-decoration:none">Get</code><a aria-hidden="true" class="hash-link" href="#Get" title="Direct link to heading">​</a></h3><span class="badge_3ZFo" style="color:#f1c40f"><span class="badgeTooltip_2qiw">This is a yielding function. When called, it will pause the Lua thread that called the function until a result is ready to be returned, without interrupting other scripts.</span><span class="badgeToolTipTail_2yaQ"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="#f1c40f" role="img" aria-label="This is a yielding function. When called, it will pause the Lua thread that called the function until a result is ready to be returned, without interrupting other scripts."><path d="M96.4 11.9c-1.4-2.5-4-4-6.9-4H10.8c-2.9 0-5.4 1.5-6.9 4-1.4 2.5-1.4 5.5 0 7.9L43.3 88c1.4 2.5 4 4 6.9 4 2.9 0 5.4-1.5 6.9-4l39.3-68.2c1.4-2.4 1.4-5.4 0-7.9zM46.3 54.5c1.1-1.1 2.3-1.6 3.8-1.6s2.8.5 3.8 1.6c1.1 1.1 1.6 2.3 1.6 3.8s-.5 2.8-1.6 3.8c-1.1 1.1-2.3 1.6-3.8 1.6s-2.8-.5-3.8-1.6c-1.1-1.1-1.6-2.3-1.6-3.8.1-1.5.6-2.8 1.6-3.8zm-.5-4.9V21.8h8.8v27.8h-8.8z"></path></svg> <!-- -->Yields</span></span><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/flamenco687/Mirror/blob/master/src/init.lua#L268"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Mirror<!-- -->.</code><code class="green_3LnD">Get</code><code>(</code><code>Name<!-- -->: </code><code class="blue_2Afy">string</code><code>) → </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="/Mirror/api/Mirror">Mirror</a></code></div><div>
+<p>Returns an existing mirror</p>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="new"><code style="text-decoration:none">new</code><a aria-hidden="true" class="hash-link" href="#new" title="Direct link to heading">​</a></h3><span class="docTag_3qMS" style="border-color:#ff793f;color:#ff793f">Constructor</span><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/flamenco687/Mirror/blob/master/src/init.lua#L302"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Mirror<!-- -->.</code><code class="green_3LnD">new</code><code>(</code><div class="inset_2cJr"><div><code>Name<!-- -->: </code><code class="blue_2Afy">string</code><code>,</code></div><div><code>Origin<!-- -->: </code><code class="blue_2Afy">table?</code><code>,</code><span class="inlineDescription_17uy">-- <span>
+<p>Optional table to work as a base for the mirror's <a href="/Mirror/api/Mirror#Data">Mirror.Data</a></p>
+</span></span></div><div><code>Settings<!-- -->: </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="/Mirror/api/Mirror#MirrorSettings">MirrorSettings?</a></code><span class="inlineDescription_17uy">-- <span>
+<p>Additional settings such as whitelist, visibility...</p>
+</span></span></div></div><code>) → </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="/Mirror/api/Mirror">Mirror</a></code></div><h3>Types</h3><h3 class="anchor anchorWithStickyNavbar_31ik" id="MirrorSettings"><a aria-hidden="true" class="hash-link" href="#MirrorSettings" title="Direct link to heading">​</a></h3><div class="memberString_P8-X"><code class="purple__nFc">interface</code> <code>MirrorSettings<!-- --> <!-- -->{</code><div class="inset_2cJr"><div><code>Whitelist<!-- -->: </code><code class="purple__nFc">{</code><span><code>[</code><code class="blue_2Afy">number</code><code>]</code></span><code>: </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="purple__nFc">}</code><code class="blue_2Afy">?</code></div><div><code>IsPrivate<!-- -->: </code><code class="blue_2Afy">boolean?</code></div></div><code>}</code></div><div></div><div>
+<p>Constructs a new mirror</p>
+<div class="admonition admonition-caution alert alert--warning">
+  <div class="admonition-heading">
+    <h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+          <path d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path>
+        </svg></span>caution</h5>
+  </div>
+  <div class="admonition-content">
+    <p>
+      The constructor function is used by both client and server but it should only directly be called
+      by the server to create new mirrors. The client will automatically retrieve all mirror settings
+      and construct the mirror internally when requesting a mirror with <a href="/Mirror/api/Mirror#Get">Mirror.Get</a>
+    </p>
+  </div>
+</div>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="AddWhitelist"><code style="text-decoration:none">AddWhitelist</code><a aria-hidden="true" class="hash-link" href="#AddWhitelist" title="Direct link to heading">​</a></h3><span class="badge_3ZFo" style="color:#00CC67"><span class="badgeTooltip_2qiw">This item only works when running on the server.</span><span class="badgeToolTipTail_2yaQ"><svg fill="#00CC67" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 90 90" role="img" aria-label="This item only works when running on the server."><polygon points="6.125,72.421 58.544,88.523 58.544,24.372 6.125,8.269 "></polygon><polygon points="79.818,15.77 79.868,15.755 29.615,1.453 10.328,6.318 60.102,21.609 "></polygon><path d="M61.643,78.738l22.232-6.582V17.801l-22.232,6.584V78.738z M73.811,69.257c-1.174,0-2.125-1.19-2.125-2.659  c0-1.468,0.951-2.658,2.125-2.658c1.172,0,2.123,1.19,2.123,2.658C75.934,68.066,74.982,69.257,73.811,69.257z M64.898,32.121  l16.336-4.41v7.117l-16.336,4.409V32.121z M64.898,41.292l16.336-4.41v7.116l-16.336,4.409V41.292z M64.898,50.463l16.336-4.411  v7.116l-16.336,4.411V50.463z"></path><polygon points="83.875,74.893 61.643,81.477 61.643,88.547 83.875,81.963 "></polygon></svg> <!-- -->Server</span></span><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/flamenco687/Mirror/blob/master/src/init.lua#L214"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Mirror<!-- -->:</code><code class="green_3LnD">AddWhitelist</code><code>(</code><code>PlayerToAdd<!-- -->: </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_1JtD"> | </code><code class="blue_2Afy">Array</code><code class="op_1JtD">&lt;</code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_1JtD">&gt;</code><code>) → </code><code>(</code><code>)</code></div><div>
+<p>Adds player or array of players to the <a href="/Mirror/api/Mirror#_Whitelist">Mirror._Whitelist</a></p>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="RemoveWhitelist"><code style="text-decoration:none">RemoveWhitelist</code><a aria-hidden="true" class="hash-link" href="#RemoveWhitelist" title="Direct link to heading">​</a></h3><span class="badge_3ZFo" style="color:#00CC67"><span class="badgeTooltip_2qiw">This item only works when running on the server.</span><span class="badgeToolTipTail_2yaQ"><svg fill="#00CC67" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 90 90" role="img" aria-label="This item only works when running on the server."><polygon points="6.125,72.421 58.544,88.523 58.544,24.372 6.125,8.269 "></polygon><polygon points="79.818,15.77 79.868,15.755 29.615,1.453 10.328,6.318 60.102,21.609 "></polygon><path d="M61.643,78.738l22.232-6.582V17.801l-22.232,6.584V78.738z M73.811,69.257c-1.174,0-2.125-1.19-2.125-2.659  c0-1.468,0.951-2.658,2.125-2.658c1.172,0,2.123,1.19,2.123,2.658C75.934,68.066,74.982,69.257,73.811,69.257z M64.898,32.121  l16.336-4.41v7.117l-16.336,4.409V32.121z M64.898,41.292l16.336-4.41v7.116l-16.336,4.409V41.292z M64.898,50.463l16.336-4.411  v7.116l-16.336,4.411V50.463z"></path><polygon points="83.875,74.893 61.643,81.477 61.643,88.547 83.875,81.963 "></polygon></svg> <!-- -->Server</span></span><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/flamenco687/Mirror/blob/master/src/init.lua#L227"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Mirror<!-- -->:</code><code class="green_3LnD">RemoveWhitelist</code><code>(</code><code>PlayerToRemove<!-- -->: </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_1JtD"> | </code><code class="blue_2Afy">Array</code><code class="op_1JtD">&lt;</code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_1JtD">&gt;</code><code>) → </code><code>(</code><code>)</code></div><div>
+<p>Removes player or array of players from the <a href="/Mirror/api/Mirror#_Whitelist">Mirror._Whitelist</a></p>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="Set"><code style="text-decoration:none">Set</code><a aria-hidden="true" class="hash-link" href="#Set" title="Direct link to heading">​</a></h3><span class="badge_3ZFo" style="color:#00CC67"><span class="badgeTooltip_2qiw">This item only works when running on the server.</span><span class="badgeToolTipTail_2yaQ"><svg fill="#00CC67" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 90 90" role="img" aria-label="This item only works when running on the server."><polygon points="6.125,72.421 58.544,88.523 58.544,24.372 6.125,8.269 "></polygon><polygon points="79.818,15.77 79.868,15.755 29.615,1.453 10.328,6.318 60.102,21.609 "></polygon><path d="M61.643,78.738l22.232-6.582V17.801l-22.232,6.584V78.738z M73.811,69.257c-1.174,0-2.125-1.19-2.125-2.659  c0-1.468,0.951-2.658,2.125-2.658c1.172,0,2.123,1.19,2.123,2.658C75.934,68.066,74.982,69.257,73.811,69.257z M64.898,32.121  l16.336-4.41v7.117l-16.336,4.409V32.121z M64.898,41.292l16.336-4.41v7.116l-16.336,4.409V41.292z M64.898,50.463l16.336-4.411  v7.116l-16.336,4.411V50.463z"></path><polygon points="83.875,74.893 61.643,81.477 61.643,88.547 83.875,81.963 "></polygon></svg> <!-- -->Server</span></span><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/flamenco687/Mirror/blob/master/src/init.lua#L250"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Mirror<!-- -->:</code><code class="green_3LnD">Set</code><code>(</code><code>NewData<!-- -->: </code><code class="blue_2Afy">table</code><code>) → </code><code>(</code><code>)</code></div><div>
+<p>Overrides the current <a href="/Mirror/api/Mirror#Data">Mirror.Data</a> and sets it to the passed table</p>
+</div></div></article></div><details><summary>Show raw api</summary><pre style="max-width:100%;white-space:pre-wrap">{
+    &quot;functions&quot;: [
+        {
+            &quot;name&quot;: &quot;ListenToReflexUpdates&quot;,
+            &quot;desc&quot;: &quot;Makes passed reflex to start listening to value changes, child additions\nand ancestry changes so server-mirror values can be replicated to the\nclient mirror through reflexes.&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;Reflex&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Instance | Types.Reflex&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Table&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Proxy&quot;
+                }
+            ],
+            &quot;returns&quot;: [],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;realm&quot;: [
+                &quot;Client&quot;
+            ],
+            &quot;private&quot;: true,
+            &quot;source&quot;: {
+                &quot;line&quot;: 52,
+                &quot;path&quot;: &quot;src/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;ValueChanged&quot;,
+            &quot;desc&quot;: &quot;Listens to reflex value changes and updates the [Mirror.Data] entry accordingly\n\n:::info Listener\nThis function is a listener function that is activated when [Mirror.ListenToReflexUpdates]\nis called and stops listening when the reflex which updates are being tracked is destroyed\n\n\n    &quot;,
+            &quot;params&quot;: [],
+            &quot;returns&quot;: [],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;tags&quot;: [
+                &quot;Listener&quot;
+            ],
+            &quot;realm&quot;: [
+                &quot;Client&quot;
+            ],
+            &quot;private&quot;: true,
+            &quot;source&quot;: {
+                &quot;line&quot;: 76,
+                &quot;path&quot;: &quot;src/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;ChildAdded&quot;,
+            &quot;desc&quot;: &quot;Listens to reflex child additions. When a child is added to a reflex, it means that the reflex\nreal value is now a table and the children are its entry values. Reflex&#x27;s children listeners\nare initiated on creation just as the parent reflex listeners were initiated too.\n\n:::info Listener\nThis function is a listener function that is activated when [Mirror.ListenToReflexUpdates]\nis called and stops listening when the reflex which updates are being tracked is destroyed\n\n\n    &quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;Child&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Instance | Types.Reflex&quot;
+                }
+            ],
+            &quot;returns&quot;: [],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;tags&quot;: [
+                &quot;Listener&quot;
+            ],
+            &quot;realm&quot;: [
+                &quot;Client&quot;
+            ],
+            &quot;private&quot;: true,
+            &quot;source&quot;: {
+                &quot;line&quot;: 101,
+                &quot;path&quot;: &quot;src/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;Destroyed&quot;,
+            &quot;desc&quot;: &quot;Listens to reflex ancestry changes to check if the reflex no longer exists and to\ndisconnect its connections if it is the case\n\n:::info Listener\nThis function is a listener function that is activated when [Mirror.ListenToReflexUpdates]\nis called and stops listening when the reflex which updates are being tracked is destroyed\n\n\n    &quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;Child&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Instance&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Parent&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Instance | nil&quot;
+                }
+            ],
+            &quot;returns&quot;: [],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;tags&quot;: [
+                &quot;Listener&quot;
+            ],
+            &quot;realm&quot;: [
+                &quot;Client&quot;
+            ],
+            &quot;private&quot;: true,
+            &quot;source&quot;: {
+                &quot;line&quot;: 129,
+                &quot;path&quot;: &quot;src/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;OnServerKeyChange&quot;,
+            &quot;desc&quot;: &quot;Fires when a key is changed on the server&#x27;s [Mirror.Data]. The function updates\nthe reflex equivalent of the key and triggers the whole replication process\nby updating its value, connecting listeners and destroying old children&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;Key&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;string&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Value&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;any&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;OldValue&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;any&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;self&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Proxy&quot;
+                }
+            ],
+            &quot;returns&quot;: [],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;realm&quot;: [
+                &quot;Server&quot;
+            ],
+            &quot;private&quot;: true,
+            &quot;source&quot;: {
+                &quot;line&quot;: 154,
+                &quot;path&quot;: &quot;src/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;TableToProxy&quot;,
+            &quot;desc&quot;: &quot;Converts a vanilla table into a proxy object that is able to detect key\nchanges. Proxies serve the purpose of detecting value changes from the\nserver so they can be replicated through reflexes to the client.&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;Table&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;table&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Recursive&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;boolean&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Container&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Instance&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Proxy\r\n&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;private&quot;: true,
+            &quot;source&quot;: {
+                &quot;line&quot;: 175,
+                &quot;path&quot;: &quot;src/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;AddWhitelist&quot;,
+            &quot;desc&quot;: &quot;Adds player or array of players to the [Mirror._Whitelist]&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;PlayerToAdd&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Player | Array&lt;Player&gt;&quot;
+                }
+            ],
+            &quot;returns&quot;: [],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;realm&quot;: [
+                &quot;Server&quot;
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 214,
+                &quot;path&quot;: &quot;src/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;RemoveWhitelist&quot;,
+            &quot;desc&quot;: &quot;Removes player or array of players from the [Mirror._Whitelist]&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;PlayerToRemove&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Player | Array&lt;Player&gt;&quot;
+                }
+            ],
+            &quot;returns&quot;: [],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;realm&quot;: [
+                &quot;Server&quot;
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 227,
+                &quot;path&quot;: &quot;src/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;Set&quot;,
+            &quot;desc&quot;: &quot;Overrides the current [Mirror.Data] and sets it to the passed table&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;NewData&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;table&quot;
+                }
+            ],
+            &quot;returns&quot;: [],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;realm&quot;: [
+                &quot;Server&quot;
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 250,
+                &quot;path&quot;: &quot;src/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;Get&quot;,
+            &quot;desc&quot;: &quot;Returns an existing mirror&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;Name&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;string&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Mirror\r\n&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;yields&quot;: true,
+            &quot;source&quot;: {
+                &quot;line&quot;: 268,
+                &quot;path&quot;: &quot;src/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;new&quot;,
+            &quot;desc&quot;: &quot;Constructs a new mirror\n\n:::caution\nThe constructor function is used by both client and server but it should only directly be called\nby the server to create new mirrors. The client will automatically retrieve all mirror settings\nand construct the mirror internally when requesting a mirror with [Mirror.Get]&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;Name&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;string&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Origin&quot;,
+                    &quot;desc&quot;: &quot;Optional table to work as a base for the mirror&#x27;s [Mirror.Data]&quot;,
+                    &quot;lua_type&quot;: &quot;table?&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Settings&quot;,
+                    &quot;desc&quot;: &quot;Additional settings such as whitelist, visibility...&quot;,
+                    &quot;lua_type&quot;: &quot;MirrorSettings?&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Mirror\r\n&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;tags&quot;: [
+                &quot;Constructor&quot;
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 302,
+                &quot;path&quot;: &quot;src/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;RequestRealValue&quot;,
+            &quot;desc&quot;: &quot;Returns the real value of the requested reflex. The function automatically checks if the\nrequested reflex exists or is valid and if the player that requested the value is in the\nreflex&#x27;s mirror whitelist (in case the mirror is private).\n\n\n    &quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;Player&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Player&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Reflex&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Types.Reflex&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;any\r\n&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;tags&quot;: [
+                &quot;RemoteFunction&quot;
+            ],
+            &quot;realm&quot;: [
+                &quot;Server&quot;
+            ],
+            &quot;private&quot;: true,
+            &quot;source&quot;: {
+                &quot;line&quot;: 356,
+                &quot;path&quot;: &quot;src/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;ReflexesToTable&quot;,
+            &quot;desc&quot;: &quot;Converts the equivalent values of a whole instance tree of reflexes into\na vanilla table that can later be used as a proxy for [Mirror.Data]&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;Parent&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Instance&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Dictionary&lt;any&gt;\r\n&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;tags&quot;: [
+                &quot;Utility&quot;
+            ],
+            &quot;realm&quot;: [
+                &quot;Client&quot;
+            ],
+            &quot;private&quot;: true,
+            &quot;source&quot;: {
+                &quot;line&quot;: 15,
+                &quot;path&quot;: &quot;src/Utility/Client/ReflexesToTable.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;DestroyChildren&quot;,
+            &quot;desc&quot;: &quot;Destroys all children of an Instance&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;Parent&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Instance&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;nil\r\n&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;tags&quot;: [
+                &quot;Utility&quot;
+            ],
+            &quot;realm&quot;: [
+                &quot;Server&quot;
+            ],
+            &quot;private&quot;: true,
+            &quot;source&quot;: {
+                &quot;line&quot;: 12,
+                &quot;path&quot;: &quot;src/Utility/Server/DestroyChildren.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;SetReflexValue&quot;,
+            &quot;desc&quot;: &quot;Sets a new value for the passed reflex. The function checks if the value type\nis supported by attributes, in which case they are used. Otherwhise, the real\nvalue is stored in the `NonSupportedValues` shared table and the attribute is\nset to nil to indicate that the real value must be requested.\n\n:::danger\nAll changes made to the reflex instance must be done after working with the\n`NonSupportedValues` table, otherwise the client could receive a wrong value&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;Reflex&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Types.Reflex&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Value&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;any&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Types.Reflex\r\n&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;tags&quot;: [
+                &quot;Utility&quot;
+            ],
+            &quot;realm&quot;: [
+                &quot;Server&quot;
+            ],
+            &quot;private&quot;: true,
+            &quot;source&quot;: {
+                &quot;line&quot;: 25,
+                &quot;path&quot;: &quot;src/Utility/Server/SetReflexValue.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;GetInstance&quot;,
+            &quot;desc&quot;: &quot;Looks for an existing instance with the given name or creates a new one\nof the specified class if the caller is the server. The client will only\nwait for the existance of the desired instance if a parent was specified.\n\n:::note\nNo return type is specified since function can return any type of instance\nand type check may freak out when working with this function if [Instance]\nwas specified as the returned value type&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;Name&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;string&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Class&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;string?&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Parent&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Instance?&quot;
+                }
+            ],
+            &quot;returns&quot;: [],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;tags&quot;: [
+                &quot;Utility&quot;
+            ],
+            &quot;private&quot;: true,
+            &quot;source&quot;: {
+                &quot;line&quot;: 21,
+                &quot;path&quot;: &quot;src/Utility/Shared/GetInstance.lua&quot;
+            }
+        }
+    ],
+    &quot;properties&quot;: [
+        {
+            &quot;name&quot;: &quot;Data&quot;,
+            &quot;desc&quot;: &quot;&quot;,
+            &quot;lua_type&quot;: &quot;Proxy&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 41,
+                &quot;path&quot;: &quot;src/init.lua&quot;
+            }
+        }
+    ],
+    &quot;types&quot;: [
+        {
+            &quot;name&quot;: &quot;NonSupportedValues&quot;,
+            &quot;desc&quot;: &quot;This type is only used by a shared table made to hold values which are not supported by attributes\nand for such reason must be requested by the client through [RemoteFunction]&quot;,
+            &quot;lua_type&quot;: &quot;{[Reflex]: any}&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 28,
+                &quot;path&quot;: &quot;src/Shared/NonSupportedValues.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;Reflex&quot;,
+            &quot;desc&quot;: &quot;Reflexes are containers that simply hold a value (using roblox attributes) in a studio-instance. The reflexes of a mirror\nrepresent that mirror&#x27;s [Mirror.Data] in an instance tree so the client can easily access primitive values by making\nuse of `:GetAttribute()`. If a reflex&#x27;s value is nil it means that the real value is being held by the server because\nit cannot be set as an attribute value.&quot;,
+            &quot;lua_type&quot;: &quot;Configuration&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 32,
+                &quot;path&quot;: &quot;src/Types/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;MirrorSettings&quot;,
+            &quot;desc&quot;: &quot;&quot;,
+            &quot;fields&quot;: [
+                {
+                    &quot;name&quot;: &quot;Whitelist&quot;,
+                    &quot;lua_type&quot;: &quot;{[number]: Player}?&quot;,
+                    &quot;desc&quot;: &quot;&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;IsPrivate&quot;,
+                    &quot;lua_type&quot;: &quot;boolean?&quot;,
+                    &quot;desc&quot;: &quot;&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 37,
+                &quot;path&quot;: &quot;src/Types/init.lua&quot;
+            }
+        }
+    ],
+    &quot;name&quot;: &quot;Mirror&quot;,
+    &quot;desc&quot;: &quot;&quot;,
+    &quot;source&quot;: {
+        &quot;line&quot;: 36,
+        &quot;path&quot;: &quot;src/init.lua&quot;
+    }
+}</pre></details></div><div class="col col--3"><div class="tableOfContents_35-E thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a><ul><li><a href="#MirrorSettings" class="table-of-contents__link toc-highlight">MirrorSettings</a></li><li><a href="#NonSupportedValues" class="table-of-contents__link toc-highlight">NonSupportedValues</a></li><li><a href="#Reflex" class="table-of-contents__link toc-highlight">Reflex</a></li></ul></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href="#Data" class="table-of-contents__link toc-highlight">Data</a></li></ul></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#AddWhitelist" class="table-of-contents__link toc-highlight">:AddWhitelist</a></li><li><a href="#RemoveWhitelist" class="table-of-contents__link toc-highlight">:RemoveWhitelist</a></li><li><a href="#Set" class="table-of-contents__link toc-highlight">:Set</a></li><li><a href="#Get" class="table-of-contents__link toc-highlight">.Get</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2022 flamenco687. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
+<script src="/Mirror/assets/js/runtime~main.252fc8ec.js"></script>
+<script src="/Mirror/assets/js/main.d47ff86d.js"></script>
+</body>
+</html>
