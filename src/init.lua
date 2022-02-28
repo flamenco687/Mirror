@@ -332,13 +332,29 @@ function Mirror.new(Name: string, Origin: table?, Settings: Types.MirrorSettings
         _Container = Container,
         _Name = Name,
 
-        Data = Data
+        Data = Data,
     }
 
     ActiveMirrors[Name] = self
 
     return setmetatable(self, METATABLE)
 end
+
+export type Mirror = {
+    _Whitelist: {[number]: Player},
+    _IsPrivate: boolean,
+
+    _ChangeListeners: table,
+
+    _Container: Folder,
+    _Name: string,
+
+    Data: table,
+
+    Set: (self: Mirror, NewData: table) -> (),
+    RemoveWhitelist: (self: Mirror, PlayerToRemove: Player | Array<Player>) -> (),
+    AddWhitelist: (self: Mirror, PlayerToAdd: Player | Array<Player>) -> (),
+}
 
 if IsServer then
 
@@ -373,8 +389,8 @@ if IsServer then
     GetReflexRealValue.OnServerInvoke = RequestRealValue
 end
 
-export type Mirror = typeof(Mirror.new(""))
 export type Proxy = typeof(Proxy.new())
+
 export type table = {[any]: any}
 
 return Mirror
