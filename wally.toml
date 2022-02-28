@@ -2,7 +2,7 @@
 name = "flamenco687/mirror"
 description = "Roblox library to make state replication funnier"
 
-version = "0.3.0-beta"
+version = "0.3.1-beta"
 license = "MIT"
 
 authors = ["flamenco687"]
