@@ -51,10 +51,10 @@ local METATABLE = {__index = Mirror}
 ]=]
 local function ListenToReflexUpdates(Reflex: Instance | Types.Reflex, Table: Proxy)
     if not rawget(Table._Proxy, Reflex.Name) then
-        local Value: any = if Reflex:GetAttribute("Value") then Reflex:GetAttribute("Value") else GetReflexRealValue:InvokeServer(Reflex)
+        local Value: any = if Reflex:GetAttribute("Value") ~= nil then Reflex:GetAttribute("Value") else GetReflexRealValue:InvokeServer(Reflex)
 
         if Value == nil and #Reflex:GetChildren() > 0 then
-            Table[Reflex.Name] = TableToProxy(ReflexesToTable(Reflex, true), true, Reflex)
+            Table[Reflex.Name] = TableToProxy(ReflexesToTable(Reflex), true, Reflex)
         else
             Table[Reflex.Name] = Value
         end
@@ -74,10 +74,10 @@ local function ListenToReflexUpdates(Reflex: Instance | Types.Reflex, Table: Pro
         @within Mirror
     ]=]
     local function ValueChanged()
-        local NewValue: any = if Reflex:GetAttribute("Value") then Reflex:GetAttribute("Value") else GetReflexRealValue:InvokeServer(Reflex)
+        local NewValue: any = if Reflex:GetAttribute("Value") ~= nil then Reflex:GetAttribute("Value") else GetReflexRealValue:InvokeServer(Reflex)
 
         if NewValue == nil and #Reflex:GetChildren() > 0 then -- When a reflex has children and its real value is nil, it is considered a table
-            Table[Reflex.Name] = TableToProxy(ReflexesToTable(Reflex, true), true, Reflex)
+            Table[Reflex.Name] = TableToProxy(ReflexesToTable(Reflex), true, Reflex)
         else
             Table[Reflex.Name] = NewValue
         end
@@ -126,7 +126,7 @@ local function ListenToReflexUpdates(Reflex: Instance | Types.Reflex, Table: Pro
 
         @within Mirror
     ]=]
-    local function Destroyed(Child: Instance, Parent: Instance | nil)
+    local function Destroyed(_, Parent: Instance | nil)
         if Parent then
             return
         end
@@ -279,7 +279,7 @@ function Mirror.Get(Name: string): Mirror
         -- to the mirror. This way, the scritp doesn't run functions that may not be necessary since the player
         -- will never have access to the mirror
 
-        return Mirror.new(Name, ReflexesToTable(GetInstance(Name, "Folder", MainContainer), true))
+        return Mirror.new(Name, ReflexesToTable(GetInstance(Name, "Folder", MainContainer)))
     end
 
     return ActiveMirrors[Name]
